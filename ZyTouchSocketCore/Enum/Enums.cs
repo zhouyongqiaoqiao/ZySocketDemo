@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
-namespace ZyTouchSocketCore.Core.Enum
+namespace ZySocketCore.Core.Enum
 {
     internal enum MessageType
     {
@@ -49,6 +49,8 @@ namespace ZyTouchSocketCore.Core.Enum
         QUERY = 203,
 
         QUERY_ASYNC = 204,
+
+        QUERY_RESPONSE = 213,
 
         BLOB = 207,
 

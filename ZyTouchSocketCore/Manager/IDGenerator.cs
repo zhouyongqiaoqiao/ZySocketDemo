@@ -1,6 +1,6 @@
 ﻿using TouchSocket.Core;
 
-namespace ZyTouchSocketCore.Manager
+namespace ZySocketCore.Manager
 {
     public class IDGenerator
     {

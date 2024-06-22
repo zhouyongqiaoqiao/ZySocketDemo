@@ -5,8 +5,8 @@ using TouchSocket.Core;
 using TouchSocket.Sockets;
 using ZyLightTouchSocketCore.Interface;
 using ZyLightTouchSocketCore.Server;
-using ZyTouchSocketCore;
-using ZyTouchSocketCore.Core.Enum;
+using ZySocketCore;
+using ZySocketCore.Core.Enum;
 
 namespace ZyLightTouchSocketCore.Core
 {
@@ -51,7 +51,7 @@ namespace ZyLightTouchSocketCore.Core
                     {
                         CustomMessage customizeMessage = SerializeConvert.FastBinaryDeserialize<CustomMessage>(packageInfo.Body);
                         byte[]? resData = this.HandleQuery(sender, customizeMessage.InformationType, customizeMessage.Content);
-                        sender.SendMessageAsync((int)MessageType.NORMAL_MESSAGE_ASYNC, resData);
+                        sender.SendMessageAsync((int)MessageType.QUERY_RESPONSE, resData);
                         break;
                     }
                 #endregion
@@ -64,14 +64,14 @@ namespace ZyLightTouchSocketCore.Core
         {
             if (byteBlock.Len == 0) { return; }
 
-            string[] strs = byteBlock.ToString().Split(ZyTouchSocketCore.SenderExtension.Separator_Msg_Str);
+            string[] strs = byteBlock.ToString().Split(ZySocketCore.SenderExtension.Separator_Msg_Str);
             int msgType = -1;
             if (strs.Length > 1)
             {
                 int.TryParse(strs[0], out msgType);
             }
             string customMsg = strs[1];
-            var customizeMessage = customMsg.Split(ZyTouchSocketCore.SenderExtension.Separator_CustomMsg_Str);
+            var customizeMessage = customMsg.Split(ZySocketCore.SenderExtension.Separator_CustomMsg_Str);
             int informationType = int.Parse(customizeMessage[0]);
             string content = customizeMessage[1];
 

@@ -7,9 +7,9 @@ using TouchSocket.Core;
 using TouchSocket.Sockets;
 using ZyLightTouchSocketCore.Client;
 using ZyLightTouchSocketCore.Core;
-using ZyTouchSocketCore.Core.Enum;
+using ZySocketCore.Core.Enum;
 
-namespace ZyTouchSocketCore
+namespace ZySocketCore
 {
     internal static class SenderExtension
     {

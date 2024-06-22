@@ -8,21 +8,6 @@ using ZyLightTouchSocketCore.Interface;
 
 namespace TouchSocketClient_Win
 {
-
-    internal class CustomMessage
-    {
-        /// <summary>
-        /// 自定义消息类型
-        /// </summary>
-        public int InformationType { get; set; }
-
-        /// <summary>
-        /// 自定义消息内容
-        /// </summary>
-        public byte[] Content { get; set; }
-
-    }
-
     public partial class Form1 : Form, ICustomizeHandler
     {
         ZyLightTcpClientEngine tcpClient;
@@ -61,7 +46,8 @@ namespace TouchSocketClient_Win
             if ((DateTime.Now - lastSrollTime).TotalMilliseconds > 1000)
             {
                 this.txb_info.ScrollToCaret();
-            }
+                lastSrollTime = DateTime.Now;
+            }            
         }
 
         private void btn_connect_Click(object sender, EventArgs e)
@@ -123,12 +109,12 @@ namespace TouchSocketClient_Win
         {
             try
             {
-                for (int i = 100; i > 0; i--)
-                {
+                //for (int i = 100; i > 0; i--)
+                //{
                     //string res = await this.tcpClient.QueryMessageFromServerAsync(i, "1+2"); 
-                    byte[] res = await this.tcpClient.QueryMessageFromServerAsync(i, Encoding.UTF8.GetBytes("1+2"));
-                    this.WriteInfo($"{i}_收到返回消息：{ Encoding.UTF8.GetString(res)}");
-                }
+                    byte[] res = await this.tcpClient.QueryMessageFromServerAsync(1234, Encoding.UTF8.GetBytes("1+2"));
+                    this.WriteInfo($"_收到返回消息：{ Encoding.UTF8.GetString(res)}");
+                //}
 
             }
             catch (Exception ee)

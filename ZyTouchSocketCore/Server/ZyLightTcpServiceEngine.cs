@@ -5,8 +5,8 @@ using TouchSocket.Core;
 using TouchSocket.Sockets;
 using ZyLightTouchSocketCore.Core;
 using ZyLightTouchSocketCore.Interface;
-using ZyTouchSocketCore;
-using ZyTouchSocketCore.Core.Enum;
+using ZySocketCore;
+using ZySocketCore.Core.Enum;
 
 namespace ZyLightTouchSocketCore.Server
 {

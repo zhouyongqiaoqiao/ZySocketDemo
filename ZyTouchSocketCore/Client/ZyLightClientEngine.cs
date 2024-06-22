@@ -6,8 +6,8 @@ using TouchSocket.Sockets;
 using ZyLightTouchSocketCore.Core;
 using ZyLightTouchSocketCore.Interface;
 using ZyLightTouchSocketCore.Server;
-using ZyTouchSocketCore;
-using ZyTouchSocketCore.Core.Enum;
+using ZySocketCore;
+using ZySocketCore.Core.Enum;
 
 namespace ZyLightTouchSocketCore.Client
 {
@@ -148,7 +148,18 @@ namespace ZyLightTouchSocketCore.Client
                     {
                         FilterFunc = (responsedData) =>
                         {
-                            return true;
+                            if (responsedData.Data?.Length > 0)
+                            {
+                                return true;
+                            }
+                            if (responsedData.RequestInfo is ZyLightFixedHeaderPackageInfo packageInfo)
+                            {
+                                if (packageInfo.MessageType == (int)MessageType.QUERY_RESPONSE)
+                                {
+                                    return true;
+                                }
+                            }
+                            return false;
                         }
                     });
                 }

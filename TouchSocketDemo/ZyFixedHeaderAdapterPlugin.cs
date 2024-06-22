@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TouchSocket.Core;
 using TouchSocket.Sockets;
 using ZyLightTouchSocketCore.Core;
-using ZyTouchSocketCore;
+using ZySocketCore;
 
 namespace TouchSocketServer
 {

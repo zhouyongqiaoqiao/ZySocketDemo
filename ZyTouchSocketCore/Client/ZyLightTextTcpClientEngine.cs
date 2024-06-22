@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using System.Threading.Tasks;
-using ZyTouchSocketCore;
-using ZyTouchSocketCore.Core.Enum;
+using ZySocketCore;
+using ZySocketCore.Core.Enum;
 
 namespace ZyLightTouchSocketCore.Client
 {

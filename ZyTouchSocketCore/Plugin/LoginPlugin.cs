@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using TouchSocket.Core;
 using TouchSocket.Sockets;
 using ZyLightTouchSocketCore.Core;
-using ZyTouchSocketCore.Core.Enum;
+using ZySocketCore.Core.Enum;
 
 namespace ZyLightTouchSocketCore.Plugin
 {

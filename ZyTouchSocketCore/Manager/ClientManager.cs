@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using TouchSocket.Sockets;
 
-namespace ZyTouchSocketCore.Manager
+namespace ZySocketCore.Manager
 {
     internal class ClientManager
     {

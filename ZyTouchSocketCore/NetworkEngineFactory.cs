@@ -18,7 +18,7 @@ namespace ZyLightTouchSocketCore
         /// <param name="helper">二进制协议助手接口</param>        
         public static ZyLightTcpServiceEngine CreateStreamTcpServerEngine(int port)
         {
-            ZyLightTcpServiceEngine engine = new ZyLightTcpServiceEngine(ZyTouchSocketCore.Core.Enum.ContractFormatStyle.Stream);
+            ZyLightTcpServiceEngine engine = new ZyLightTcpServiceEngine(ZySocketCore.Core.Enum.ContractFormatStyle.Stream);
             engine.Setup(new TouchSocketConfig()
                 .SetListenOptions(option =>
                 {
@@ -41,7 +41,7 @@ namespace ZyLightTouchSocketCore
         /// <param name="helper">文本协议助手接口</param>  
         public static ZyLightTcpServiceEngine CreateTextTcpServerEngine(int port)
         {
-            ZyLightTcpServiceEngine engine = new ZyLightTcpServiceEngine(ZyTouchSocketCore.Core.Enum.ContractFormatStyle.Text);
+            ZyLightTcpServiceEngine engine = new ZyLightTcpServiceEngine(ZySocketCore.Core.Enum.ContractFormatStyle.Text);
 
             engine.Setup(new TouchSocketConfig()
                 .SetListenOptions(option =>

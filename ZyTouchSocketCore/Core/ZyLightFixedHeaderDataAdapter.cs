@@ -2,8 +2,8 @@
 using System.Buffers;
 using TouchSocket.Core;
 using TouchSocket.Sockets;
-using ZyTouchSocketCore.Core.Enum;
-using ZyTouchSocketCore.Manager;
+using ZySocketCore.Core.Enum;
+using ZySocketCore.Manager;
 
 namespace ZyLightTouchSocketCore.Core
 {
@@ -66,11 +66,11 @@ namespace ZyLightTouchSocketCore.Core
         /// <summary>
         /// 消息内容
         /// </summary>
-        public byte[]? Body { get; private set; } = new byte[0]; //第5   (bodyLength 第4)
-
+        public byte[] Body { get => body?? new byte[0]; private set => body = value; } //为解决Body 为null时，接收方不会触发该消息的问题
         public int BodyLength { get; private set; }
 
         private bool isLittleEndian = false;
+        private byte[] body = new byte[0];
 
         private bool CheckLittleEndian()
         {
@@ -91,7 +91,7 @@ namespace ZyLightTouchSocketCore.Core
             byte[] buff = bodyLength > -1 ? new byte[13 + bodyLength] : new byte[13];
             byte[] messageIDBuff = BitConverter.GetBytes(MessageID);
             byte[] messageTypeBuff = BitConverter.GetBytes(MessageType);
-            byte[] clinetTypeBuff = BitConverter.GetBytes((uint)ClinetType);
+            byte[] clinetTypeBuff = BitConverter.GetBytes((byte)ClinetType);
             byte[] bodyLengthBuff = BitConverter.GetBytes(bodyLength);
             Buffer.BlockCopy(messageIDBuff, 0, buff, 0, messageIDBuff.Length);
             Buffer.BlockCopy(messageTypeBuff, 0, buff, 4, messageTypeBuff.Length);

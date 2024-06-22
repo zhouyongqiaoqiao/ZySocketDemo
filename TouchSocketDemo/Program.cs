@@ -1,18 +1,38 @@
-﻿using TouchSocket.Core;
+﻿using System.Reflection.PortableExecutable;
+using System.Text;
+using TouchSocket.Core;
 using TouchSocket.Sockets;
 using TouchSocketServer;
 using ZyLightTouchSocketCore;
 using ZyLightTouchSocketCore.Interface;
 using ZyLightTouchSocketCore.Server;
-using ZyTouchSocketCore;
+using ZySocketCore;
 
 
-//WebSocketServer webSocketServer = new WebSocketServer();
-//webSocketServer.Start();
+string UserID = "123456";
+string DestUserID = "654321";
+string UserID2 = "";
+string DestUserID2 = "";
+int maxLengthOfUserID = 20;
+byte[] data = new byte[1024];
+using (ByteBlock byteBlock = new ByteBlock(data))
+{
+    byteBlock.Write(UserID.PadRight(maxLengthOfUserID));
+    byteBlock.Write(DestUserID.PadRight(maxLengthOfUserID));
+}
+
+using (ByteBlock byteBlock = new ByteBlock(data)) 
+{ 
+     UserID2 = byteBlock.ReadString().Trim();
+     DestUserID2 = byteBlock.ReadString().Trim();
+}
+
+    //WebSocketServer webSocketServer = new WebSocketServer();
+    //webSocketServer.Start();
 
 
-//ZyLightTcpServiceEngine service = NetworkEngineFactory.CreateStreamTcpServerEngine(4530);
-ZyLightTcpServiceEngine service = NetworkEngineFactory.CreateStreamTcpServerEngine(4530);
+    //ZyLightTcpServiceEngine service = NetworkEngineFactory.CreateStreamTcpServerEngine(4530);
+    ZyLightTcpServiceEngine service = NetworkEngineFactory.CreateStreamTcpServerEngine(4530);
 service.Connecting = (client, e) => { Console.WriteLine($"{client.Id} 正在连接！");return EasyTask.CompletedTask; };
 service.Connected = (client, e) => { Console.WriteLine($"{client.Id} 已连接！"
     );
